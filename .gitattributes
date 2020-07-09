@@ -1,8 +1,2 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-#忽略VScode 的配置文件
-*.vscode 
-#忽略本地git文件
-*.git
-*.autogit
-*.json

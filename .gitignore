@@ -163,3 +163,10 @@ GUI_GEN.conf
 seed_file
 last_seed_file
 *.brite
+
+#忽略VScode 的配置文件
+*.vscode 
+#忽略本地git文件
+*.git
+*.autogit
+*.json
