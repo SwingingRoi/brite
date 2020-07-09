@@ -42,5 +42,18 @@ public class BriteExportNew {
     private Graph graph;
     private String modelString;
 
-    
+    /**
+     * Class Constructor: Returns a BriteExport object which your code
+     * my keep around.  Does not actually write the topology to the
+     * file.  You must explicitly call the <code>export()</code> method of this
+     * object in order to write to the file.
+     *
+     * @param t       the topology object to export
+     * @param outFile the destination file to write the topology to.
+     */
+    public BriteExport(Topology topology,File outFile)
+    {
+        this.topology = topology;
+        
+    }
 }
