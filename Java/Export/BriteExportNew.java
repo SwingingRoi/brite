@@ -86,10 +86,11 @@ public class BriteExportNew {
         bufferedWriter.newLine();
         //write the mode type
         bufferedWriter.write(modelString);
+        bufferedWriter.newLine();
     }
    //write the node information 
     public void writeNodes() throws IOException
     {
-        
+          
     }
 }
