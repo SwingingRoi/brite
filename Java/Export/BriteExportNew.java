@@ -102,10 +102,10 @@ public class BriteExportNew {
               int y = (int)((NodeConf)node.getNodeConf()).getY();
               int specificNodeType = -1;
               int ASid = -1;
-              int inDegree = -1;
-              int outDegree = -1;
-              int nodeID =-1;
-              
+              int inDegree =node.getInDegree();
+              int outDegree =node.getOutDegree();
+              int nodeID = node.getID();
+
           }
     }
 }
