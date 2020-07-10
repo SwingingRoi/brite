@@ -91,6 +91,13 @@ public class BriteExportNew {
    //write the node information 
     public void writeNodes() throws IOException
     {
+          Node[] nodes = graph.getNodesArray();
+          Arrays.sort(nodes, Node.IDcomparator);
           
+          for(int i = 0; i < nodes.length ; ++i )
+          {
+              Node node = nodes[i];
+              int x = (int)((NodeConf)node.getNodeConf()).getX();
+          }
     }
 }
