@@ -62,5 +62,21 @@ public class BriteExportNew {
         {
             Util.ERR("Error creating BufferedWriter in BriteExport:"+e);
         }
+        graph = topology.getGraph();
+        modelString = topology.getModel().toString();
+    }
+      /**
+     * Writes the contents of the topolgy in the BRITE format to the
+     * destination file specified in the constructor.
+     */
+    public void export()
+    {
+        Util.MSG("Exporting to BRITE");
+    
+    }
+    
+    public void writeTitle()
+    {
+        bufferedWriter.write("Topology: ( " + graph.getNumNodes() + " Nodes, " + graph.getNumEdges() + " Edges )");
     }
 }
