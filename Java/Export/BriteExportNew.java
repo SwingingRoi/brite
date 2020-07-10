@@ -98,6 +98,8 @@ public class BriteExportNew {
           {
               Node node = nodes[i];
               int x = (int)((NodeConf)node.getNodeConf()).getX();
+              int y = (int)((NodeConf)node.getNodeConf()).getY();
+              
           }
     }
 }
