@@ -88,18 +88,24 @@ public class BriteExportNew {
         bufferedWriter.write(modelString);
         bufferedWriter.newLine();
     }
+
    //write the node information 
     public void writeNodes() throws IOException
     {
           Node[] nodes = graph.getNodesArray();
           Arrays.sort(nodes, Node.IDcomparator);
-          p
+          
           for(int i = 0; i < nodes.length ; ++i )
           {
               Node node = nodes[i];
               int x = (int)((NodeConf)node.getNodeConf()).getX();
               int y = (int)((NodeConf)node.getNodeConf()).getY();
-
+              int specificNodeType = -1;
+              int ASid = -1;
+              int inDegree = -1;
+              int outDegree = -1;
+              int nodeID =-1;
+              
           }
     }
 }
