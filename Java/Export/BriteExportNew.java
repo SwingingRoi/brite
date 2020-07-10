@@ -93,13 +93,13 @@ public class BriteExportNew {
     {
           Node[] nodes = graph.getNodesArray();
           Arrays.sort(nodes, Node.IDcomparator);
-          
+          p
           for(int i = 0; i < nodes.length ; ++i )
           {
               Node node = nodes[i];
               int x = (int)((NodeConf)node.getNodeConf()).getX();
               int y = (int)((NodeConf)node.getNodeConf()).getY();
-              
+
           }
     }
 }
