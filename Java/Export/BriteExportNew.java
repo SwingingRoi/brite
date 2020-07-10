@@ -51,9 +51,16 @@ public class BriteExportNew {
      * @param t       the topology object to export
      * @param outFile the destination file to write the topology to.
      */
-    public BriteExport(Topology topology,File outFile)
+    public BriteExportNew(Topology topology, File outFile) 
     {
         this.topology = topology;
-        
+
+        try
+        {
+            bufferedWriter = new  BufferedWriter(new FileWriter(outFile));
+        }catch(IOException e)
+        {
+            Util.ERR("Error creating BufferedWriter in BriteExport:"+e);
+        }
     }
 }
