@@ -105,6 +105,11 @@ public class BriteExportNew {
               int inDegree =node.getInDegree();
               int outDegree =node.getOutDegree();
               int nodeID = node.getID();
+
+              if(node.getNodeConf() instanceof RouterEdgeConf)
+              {
+                  
+              }
           }
     }
 }
