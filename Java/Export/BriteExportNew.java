@@ -126,8 +126,15 @@ public class BriteExportNew {
             }
             else if (node.getNodeConf() instanceof ASNodeConf)
             {
-                
+                if (specificNodeType == ModelConstants.AS_LEAF) bufferedWriter.write("\tAS_LEAF");
+                else if (specificNodeType == ModelConstants.AS_BORDER) bufferedWriter.write("\tAS_BORDER");
+                else if (specificNodeType == ModelConstants.AS_STUB) bufferedWriter.write("\tAS_STUB");
+                else if (specificNodeType == ModelConstants.AS_BACKBONE) bufferedWriter.write("\tAS_BACKBONE");
+                else  bufferedWriter.write("\tAS_NODE");
             }
+            bufferedWriter.newLine();
           }
+          bufferedWriter.newLine();
+          bufferedWriter.newLine();
     }
 } 
