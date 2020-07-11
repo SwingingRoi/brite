@@ -104,12 +104,30 @@ public class BriteExportNew {
               int ASid = -1;
               int inDegree =node.getInDegree();
               int outDegree =node.getOutDegree();
-              int nodeID = node.getID();
+              int nodeID = node.getID(); 
 
-              if(node.getNodeConf() instanceof RouterEdgeConf)
-              {
-                  
-              }
+            if (node.getNodeConf() instanceof RouterNodeConf) {
+                ASid = ((RouterNodeConf) node.getNodeConf()).getCorrAS();
+                specificNodeType = ((RouterNodeConf) node.getNodeConf()).getType();
+            }
+            if (node.getNodeConf() instanceof ASNodeConf) {
+                specificNodeType = ((ASNodeConf) node.getNodeConf()).getType();
+                ASid = nodeID;
+            }
+            bufferedWriter.write(nodeID + "\t" + x +"\t"+y+"\t"+inDegree+"\t"+outDegree+"\t"+ASid);
+            
+            if(node.getNodeConf() instanceof RouterNodeConf)
+            {
+                if(specificNodeType == ModelConstants.RT_LEAF) bufferedWriter.write("\tRT_LEAF");
+                else if (specificNodeType == ModelConstants.RT_BORDER) bufferedWriter.write("\tRT_BORDER");
+                else if (specificNodeType == ModelConstants.RT_STUB) bufferedWriter.write("\tRT_STUB");
+                else if (specificNodeType == ModelConstants.RT_BACKBONE) bufferedWriter.write("\tRT_BACKBONE");
+                else bufferedWriter.write("\tRT_NODE");              
+            }
+            else if (node.getNodeConf() instanceof ASNodeConf)
+            {
+                
+            }
           }
     }
 } 
