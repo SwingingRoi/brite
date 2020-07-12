@@ -153,7 +153,7 @@ public class Graph /*TODO: implements graphAlgs*/ {
             addDirectedEdge(e);
         else addUndirectedEdge(e);
 
-    }
+    } 
 
 
     /**
@@ -162,12 +162,13 @@ public class Graph /*TODO: implements graphAlgs*/ {
      * node-id as the key and next with the desitnation node-id as the
      * key.  We only increment the numEdges count once however.  Both
      * the indegree and outdegree of both nodes is incremented.
-     * Finally, the edge itself is added to the Edges HashMap.
+     * Finally, the edge itself is added to the Edges HashMap. 
      *
      * @param e The edge to be added to our graph
      */
     private void addUndirectedEdge(Edge e) {
-	
+    
+        
 	/*since this is an undirected graph, add edge from src to dest
 	  and another from dest to src*/
         Node src = e.getSrc();
