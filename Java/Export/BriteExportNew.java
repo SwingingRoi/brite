@@ -76,7 +76,8 @@ public class BriteExportNew {
     {
         Util.MSG("Exporting to BRITE");
         writeTitle();
-        
+        writeNodes();
+        writeEdges();
     }
     // write the title of brite
     public void writeTitle() throws IOException
@@ -136,5 +137,10 @@ public class BriteExportNew {
           }
           bufferedWriter.newLine();
           bufferedWriter.newLine();
+    }
+
+    public void writeEdges() throws IOException
+    {
+       
     }
 } 
