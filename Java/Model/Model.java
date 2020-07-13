@@ -53,7 +53,7 @@ public abstract class Model {
 
     /**
      * The growth method used when building the graph.  Do we grow
-     * incrementally or do we just place all the nodes at once and
+     * incrementally or do we just place all the nodes at once and  
      * then create the edges. (i.e.  GT_INCREMENTAL and GT_ALL
      * respectively - values found in ModelConstants).  More growth
      * models can be added.
@@ -62,7 +62,7 @@ public abstract class Model {
 
     /**
      * A notion of preferential connectivity.  Not implemented in
-     * any models included in this distribution.
+     * any models included in this distribution.  
      */
     protected int prefConn;
     /**
