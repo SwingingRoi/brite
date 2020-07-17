@@ -108,7 +108,7 @@ public final class ASWaxman extends ASModel {
         return (double) (alpha * Math.exp(-1.0 * (d / (beta * L))));
     }
 
-
+    
     public void ConnectNodes(Graph g) {
 
         Util.MSG("Connecting Nodes...");

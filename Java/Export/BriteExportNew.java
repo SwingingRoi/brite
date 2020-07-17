@@ -75,9 +75,17 @@ public class BriteExportNew {
     public void export() throws IOException
     {
         Util.MSG("Exporting to BRITE");
-        writeTitle();
-        writeNodes();
-        writeEdges();
+        try {
+         writeTitle();
+         writeNodes();
+         writeEdges();
+        }catch(Exception e) {
+            System.out.println("[BRITE ERROR]: Error exporting to file. " + e);
+            e.printStackTrace();
+            System.exit(0);
+
+        }
+        Util.MSG("... DONE.");
     }
     // write the title of brite
     public void writeTitle() throws IOException
@@ -141,6 +149,59 @@ public class BriteExportNew {
 
     public void writeEdges() throws IOException
     {
-       
+        /*output edges*/
+       Edge[] edges = graph.getEdgesArray();
+       bufferedWriter.write("Edges: ( " + edges.length + " )");
+       bufferedWriter.newLine();
+
+       Arrays.sort(edges, Edge.IDcomparator);
+       for (int i = 0; i < edges.length; ++i) {
+           Edge e = (Edge) edges[i];
+           Node src = e.getSrc();
+           Node dst = e.getDst();
+           double dist = e.getEuclideanDist();
+           double delay = e.getDelay();
+           int asFrom = src.getID();
+           int asTo = dst.getID();
+           if (src.getNodeConf() instanceof RouterNodeConf)
+               asFrom = ((RouterNodeConf) src.getNodeConf()).getCorrAS();
+           if (dst.getNodeConf() instanceof RouterNodeConf)
+               asTo = ((RouterNodeConf) dst.getNodeConf()).getCorrAS();
+
+           bufferedWriter.write(e.getID() + "\t" + src.getID() + "\t" + dst.getID());
+           bufferedWriter.write("\t" + dist + "\t" + delay + "\t" + e.getbufferedWriter());
+           bufferedWriter.write("\t" + asFrom + "\t" + asTo);
+
+
+           if (e.getEdgeConf() instanceof ASEdgeConf) {
+               int specificEdgeType = ((ASEdgeConf) e.getEdgeConf()).getType();
+               if (specificEdgeType == ModelConstants.E_AS_STUB)
+                   bufferedWriter.write("\tE_AS_STUB");
+               else if (specificEdgeType == ModelConstants.E_AS_BORDER)
+                   bufferedWriter.write("\tE_AS_BORDER");
+               else if (specificEdgeType == ModelConstants.E_AS_BACKBONE)/*backbone*/
+                   bufferedWriter.write("\tE_AS_BACKBONE_LINK");
+               else
+                   bufferedWriter.write("\tE_AS");
+           } else  /*we have a router*/ {
+               int specificEdgeType = ((RouterEdgeConf) e.getEdgeConf()).getType();
+               if (specificEdgeType == ModelConstants.E_RT_STUB)
+                   bufferedWriter.write("\tE_RT_STUB");
+               else if (specificEdgeType == ModelConstants.E_RT_BORDER)
+                   bufferedWriter.write("\tE_RT_BORDER");
+               else if (specificEdgeType == ModelConstants.E_RT_BACKBONE)/*backbone*/
+                   bufferedWriter.write("\tE_RT_BACKBONE");
+               else
+                   bufferedWriter.write("\tE_RT");
+           }
+
+           if (e.getDirection() == GraphConstants.DIRECTED)
+               bufferedWriter.write("\tD");
+           else bufferedWriter.write("\tU");
+
+           bufferedWriter.newLine();
+
+       }
+       bufferedWriter.close();
     }
 } 
