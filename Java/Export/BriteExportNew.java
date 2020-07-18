@@ -168,9 +168,11 @@ public class BriteExportNew {
            if (dst.getNodeConf() instanceof RouterNodeConf)
                asTo = ((RouterNodeConf) dst.getNodeConf()).getCorrAS();
 
-           bufferedWriter.write(e.getID() + "\t" + src.getID() + "\t" + dst.getID());
-           bufferedWriter.write("\t" + dist + "\t" + delay + "\t" + e.getbufferedWriter());
-           bufferedWriter.write("\t" + asFrom + "\t" + asTo);
+       
+            bufferedWriter.write(e.getID() + "\t" + src.getID() + "\t" + dst.getID());
+            bufferedWriter.write("\t" + dist + "\t" + delay + "\t" + e.getBW());
+            bufferedWriter.write("\t" + asFrom + "\t" + asTo);
+
 
 
            if (e.getEdgeConf() instanceof ASEdgeConf) {
