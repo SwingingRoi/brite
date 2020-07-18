@@ -131,11 +131,11 @@ public final class ASWaxman extends ASModel {
                     if (g.hasEdge(src, dst)) continue; //no multiedges
                     /*
                        add control of every point degree
-                       use the variable "  degree"
+                       use the variable " limitDegree"
                        writen by wangfengyu
                        time :2020.7.4
                     */
-                    const int 
+                    int limitDegree = 1000;
                     int degree = 0;
                     for(int i =0;i<nodesV.length ;++i)
                     {
@@ -143,6 +143,8 @@ public final class ASWaxman extends ASModel {
                         if(g.hasEdge(src, tmp_src)) 
                            ++degree;    
                     }
+                    if(degree > (limitDegree-2))continue;
+                    // code finish writen by wfy
                     double p = getEdgeProb(src, dst);
                     if (Distribution.getUniformRandom(ConnectRandom) < p) {
                         Edge e = new Edge(src, dst);
