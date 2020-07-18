@@ -129,7 +129,20 @@ public final class ASWaxman extends ASModel {
                     Node dst = nodesV[rand2];
                     if (rand1 == rand2) continue;        //no self loops
                     if (g.hasEdge(src, dst)) continue; //no multiedges
-
+                    /*
+                       add control of every point degree
+                       use the variable "  degree"
+                       writen by wangfengyu
+                       time :2020.7.4
+                    */
+                    const int 
+                    int degree = 0;
+                    for(int i =0;i<nodesV.length ;++i)
+                    {
+                        Node tmp_src = nodesV[i];
+                        if(g.hasEdge(src, tmp_src)) 
+                           ++degree;    
+                    }
                     double p = getEdgeProb(src, dst);
                     if (Distribution.getUniformRandom(ConnectRandom) < p) {
                         Edge e = new Edge(src, dst);
